@@ -3,9 +3,18 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-ENTERPRISE="${1:-copilottest008}"
-ORG="${2:-cloudinfra008}"
-REPO="${3:-zhangchl007/skills-secure-repository-supply-chain}"
+if [ "$#" -lt 3 ]; then
+  echo "Usage: $0 ENTERPRISE ORG REPO [APPLY]" >&2
+  echo "  ENTERPRISE  GitHub Enterprise account/tenant name" >&2
+  echo "  ORG         GitHub organization name" >&2
+  echo "  REPO        Repository name (e.g. owner/repo)" >&2
+  echo "  APPLY       Optional: 'true' to apply changes, defaults to 'false'" >&2
+  exit 1
+fi
+
+ENTERPRISE="$1"
+ORG="$2"
+REPO="$3"
 APPLY="${4:-false}"
 
 "$SCRIPT_DIR/lab1-enterprise-org-setup.sh" "$ENTERPRISE" "$ORG" "$APPLY"
