@@ -6,12 +6,12 @@ This guide helps instructors deliver the full day consistently with clear timing
 
 ## Quick Start (Before Participants Join)
 
-- Optional print copy for live facilitation: `training-templates/facilitator-one-pager.md`
+- Optional print copy for live facilitation: `code/training-templates/facilitator-one-pager.md`
 - Open these files in separate tabs:
-  - `training-templates/policy-matrix-template.md`
-  - `training-templates/threat-model-worksheet.md`
-  - `training-templates/cost-optimization-sheet.md`
-  - `training-templates/rbac-audit-table.md`
+  - `code/training-templates/policy-matrix-template.md`
+  - `code/training-templates/threat-model-worksheet.md`
+  - `code/training-templates/cost-optimization-sheet.md`
+  - `code/training-templates/rbac-audit-table.md`
 - Prepare one backup demo account and one backup repository.
 - Keep screenshots ready for admin-only screens (enterprise policy pages).
 - Create communication channels:
