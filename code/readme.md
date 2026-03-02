@@ -282,8 +282,8 @@ Identify excessive permissions and propose corrections.
 
 Use this checklist to ensure the training is runnable on the day:
 
-- Print-friendly quick reference: `training-templates/facilitator-one-pager.md`
-- Primary day-of guide: `training-templates/facilitator-run-of-show.md`
+- Print-friendly quick reference: `code/training-templates/facilitator-one-pager.md`
+- Primary day-of guide: `code/training-templates/facilitator-run-of-show.md`
 
 1. Confirm all participants passed environment smoke test.
 2. Keep one backup demo account for live troubleshooting.
@@ -306,17 +306,17 @@ At session end, each team should have:
 
 Use these files directly during workshops:
 
-- Print-friendly day-of checklist: `training-templates/facilitator-one-pager.md`
-- Session orchestration: `training-templates/facilitator-run-of-show.md`
-- Regenerated lab scripts: `training-templates/scripts/README.md`
-- Policy management: `training-templates/policy-matrix-template.md`
-- Threat modeling: `training-templates/threat-model-worksheet.md`
-- Cost optimization: `training-templates/cost-optimization-sheet.md`
-- Permission auditing: `training-templates/rbac-audit-table.md`
+- Print-friendly day-of checklist: `code/training-templates/facilitator-one-pager.md`
+- Session orchestration: `code/training-templates/facilitator-run-of-show.md`
+- Regenerated lab scripts: `code/training-templates/scripts/README.md`
+- Policy management: `code/training-templates/policy-matrix-template.md`
+- Threat modeling: `code/training-templates/threat-model-worksheet.md`
+- Cost optimization: `code/training-templates/cost-optimization-sheet.md`
+- Permission auditing: `code/training-templates/rbac-audit-table.md`
 
 Recommended usage order:
 
-1. Start from `training-templates/facilitator-run-of-show.md`.
+1. Start from `code/training-templates/facilitator-run-of-show.md`.
 2. Open the session-specific template for each lab block.
 3. Save one artifact file per team using the naming convention in the facilitator guide.
 

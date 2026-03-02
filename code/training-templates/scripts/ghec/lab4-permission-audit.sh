@@ -14,15 +14,21 @@ ORG_STATUS="OK"
 ORG_DETAIL=""
 REPO_STATUS="OK"
 REPO_DETAIL=""
+ORG_ERR_FILE="$(mktemp /tmp/lab4-org-XXXXXX.err)"
+REPO_ERR_FILE="$(mktemp /tmp/lab4-repo-XXXXXX.err)"
+cleanup() {
+  rm -f "$ORG_ERR_FILE" "$REPO_ERR_FILE"
+}
+trap cleanup EXIT
 
-if ! ORG_DETAIL=$(gh_user api /orgs/$ORG/members --paginate --jq '.[0:5] | map(.login) | join(", ")' 2>/tmp/lab4-org.err); then
+if ! ORG_DETAIL=$(gh_user api /orgs/$ORG/members --paginate --jq '.[0:5] | map(.login) | join(", ")' 2>"$ORG_ERR_FILE"); then
   ORG_STATUS="ERROR"
-  ORG_DETAIL=$(cat /tmp/lab4-org.err | tr '\n' ' ')
+  ORG_DETAIL=$(cat "$ORG_ERR_FILE" | tr '\n' ' ')
 fi
 
-if ! REPO_DETAIL=$(gh_user api /repos/$REPO/collaborators --paginate --jq '.[0:5] | map(.login) | join(", ")' 2>/tmp/lab4-repo.err); then
+if ! REPO_DETAIL=$(gh_user api /repos/$REPO/collaborators --paginate --jq '.[0:5] | map(.login) | join(", ")' 2>"$REPO_ERR_FILE"); then
   REPO_STATUS="ERROR"
-  REPO_DETAIL=$(cat /tmp/lab4-repo.err | tr '\n' ' ')
+  REPO_DETAIL=$(cat "$REPO_ERR_FILE" | tr '\n' ' ')
 fi
 
 cat > "$OUT" <<EOF

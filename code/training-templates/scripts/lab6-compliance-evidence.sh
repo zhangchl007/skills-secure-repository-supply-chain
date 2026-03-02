@@ -8,8 +8,9 @@ if [[ -z "$TEAM" || -z "$OWNER" ]]; then
   exit 1
 fi
 
-TEAM_SLUG=$(echo "$TEAM" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g')
-OUT_DIR="../submissions/team-$TEAM_SLUG"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+TEAM_SLUG=$(echo "$TEAM" | xargs | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+//; s/-+$//')
+OUT_DIR="$SCRIPT_DIR/../submissions/team-$TEAM_SLUG"
 mkdir -p "$OUT_DIR"
 OUT="$OUT_DIR/team-$TEAM_SLUG-lab6-compliance-evidence.md"
 

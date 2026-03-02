@@ -13,6 +13,14 @@ require_gh_user_auth
 log "Lab 1: enterprise/org setup"
 log "Enterprise: $ENTERPRISE | Org: $ORG | Apply: $APPLY"
 
+PAYLOAD=""
+cleanup() {
+  if [[ -n "$PAYLOAD" && -f "$PAYLOAD" ]]; then
+    rm -f "$PAYLOAD"
+  fi
+}
+trap cleanup EXIT
+
 set +e
 DISCOVERY=$(gh_user api graphql -f query='query($slug: String!) { enterprise(slug: $slug) { slug name url } }' -f slug="$ENTERPRISE" 2>/tmp/lab1-enterprise.err)
 DISCOVERY_RC=$?
@@ -45,7 +53,6 @@ if [[ "$APPLY" == "true" ]]; then
 }
 EOF
   gh_user api --method PATCH -H "Accept: application/vnd.github+json" /orgs/$ORG --input "$PAYLOAD" >/dev/null
-  rm -f "$PAYLOAD"
   log "Org baseline applied."
 else
   log "Dry-run only. Re-run with third arg true to apply."
