@@ -9,8 +9,9 @@ if [[ -z "$TEAM" || -z "$OWNER" ]]; then
   exit 1
 fi
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TEAM_SLUG=$(echo "$TEAM" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g')
-OUT_DIR="../submissions/team-$TEAM_SLUG"
+OUT_DIR="$SCRIPT_DIR/../submissions/team-$TEAM_SLUG"
 mkdir -p "$OUT_DIR"
 OUT="$OUT_DIR/team-$TEAM_SLUG-lab5-multi-repo-automation.md"
 
